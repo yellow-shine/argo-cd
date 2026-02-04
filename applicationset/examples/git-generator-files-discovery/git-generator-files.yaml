@@ -9,7 +9,7 @@ spec:
         repoURL: https://github.com/yellow-shine/argo-cd.git
         revision: HEAD
         files:
-        - path: "applicationset/examples/git-generator-files-discovery/cluster-config/**/config.json"
+        - path: "applicationset/examples/git-generator-files-discovery/cluster-config/**/guestbook.json"
   template:
     metadata:
       name: '{{.cluster}}-guestbook'
