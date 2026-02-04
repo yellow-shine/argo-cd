@@ -20,6 +20,12 @@ spec:
         repoURL: https://github.com/argoproj/argo-cd.git
         targetRevision: HEAD
         path: "applicationset/examples/git-generator-files-discovery/apps/guestbook"
+        helm:
+          valueFiles:
+            - values.yaml
+          parameters:
+            - name: replicaCount
+              value: '{{default "1" .cluster.replicaCount}}'
       destination:
         server: https://kubernetes.default.svc
         #server: '{{.cluster.address}}'
