@@ -12,7 +12,7 @@ spec:
         - path: "applicationset/examples/git-generator-files-discovery/cluster-config/**/config.json"
   template:
     metadata:
-      name: '{{.cluster.name}}-guestbook'
+      name: '{{.cluster}}-guestbook'
     spec:
       project: default
       source:
@@ -24,7 +24,11 @@ spec:
             - values.yaml
           parameters:
             - name: replicaCount
-              value: '{{default "1" .cluster.replicaCount}}'
+              value: '{{.replicaCount}}'
+            - name: image.repository
+              value: '{{.image.repository}}'
+            - name: image.tag
+              value: '{{.image.tag}}'
       destination:
         server: https://kubernetes.default.svc
         #server: '{{.cluster.address}}'
