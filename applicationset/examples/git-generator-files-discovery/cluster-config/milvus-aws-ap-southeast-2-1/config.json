@@ -2,7 +2,7 @@
   "cluster": "milvus-aws-ap-southeast-2-1",
   "replicaCount": 1,
   "image": {
-    "repository": "harbor-us-vdc.zilliz.cc/argocd-e2e-container",
+    "repository": "harbor-ap.op.zilliz.com/argocd-e2e-container",
     "tag": "0.2"
   }
 }
