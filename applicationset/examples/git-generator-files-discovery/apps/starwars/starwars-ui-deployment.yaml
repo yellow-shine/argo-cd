@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: starwars-ui
+spec:
+  replicas: 1
+  revisionHistoryLimit: 3
+  selector:
+    matchLabels:
+      app: starwars-ui
+  template:
+    metadata:
+      labels:
+        app: starwars-ui
+    spec:
+      containers:
+      - image: quay.io/argoprojlabs/argocd-e2e-container:0.2
+        name: starwars-ui
+        ports:
+        - containerPort: 80

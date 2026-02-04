@@ -1,0 +1,7 @@
+namePrefix: kustomize-
+
+resources:
+- starwars-ui-deployment.yaml
+- starwars-ui-svc.yaml
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization

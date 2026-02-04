@@ -1,0 +1,35 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: starwars
+spec:
+  goTemplate: true
+  generators:
+    - git:
+        repoURL: https://github.com/yellow-shine/argo-cd.git
+        revision: HEAD
+        files:
+        - path: "applicationset/examples/git-generator-files-discovery/cluster-config/**/starwars.json"
+  template:
+    metadata:
+      name: '{{.cluster}}-starwars'
+    spec:
+      project: default
+      source:
+        repoURL: https://github.com/yellow-shine/argo-cd.git
+        targetRevision: HEAD
+        path: "applicationset/examples/git-generator-files-discovery/apps/starwars"
+        helm:
+          valueFiles:
+            - values.yaml
+          parameters:
+            - name: replicaCount
+              value: '{{.replicaCount}}'
+            - name: image.repository
+              value: '{{.image.repository}}'
+            - name: image.tag
+              value: '{{.image.tag}}'
+      destination:
+        server: https://kubernetes.default.svc
+        #server: '{{.cluster.address}}'
+        namespace: starwars

@@ -1,0 +1,16 @@
+namePrefix: ""
+
+replicaCount: 1
+revisionHistoryLimit: 3
+
+image:
+  repository: quay.io/argoprojlabs/argocd-e2e-container
+  tag: "0.2"
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 80
+  targetPort: 80
+
+containerPort: 80
