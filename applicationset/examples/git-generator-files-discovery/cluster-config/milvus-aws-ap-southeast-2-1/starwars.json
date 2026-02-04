@@ -1,8 +1,0 @@
-{
-  "cluster": "milvus-ali-ap-southeast-1",
-  "replicaCount": 1,
-  "image": {
-    "repository": "harbor.zilliz.com.cn/argocd-e2e-container",
-    "tag": "0.2"
-  }
-}
